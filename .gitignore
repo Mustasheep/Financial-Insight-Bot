@@ -1,0 +1,8 @@
+# Ambiente Vitural
+.venv
+
+# Dados
+dados_rpm
+
+# Configurações locais
+.env
