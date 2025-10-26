@@ -2,7 +2,11 @@
 .venv
 
 # Dados
-dados_rpm
+*.pdf
 
 # Configurações locais
 .env
+faiss_index/
+
+# Cache do Python
+__pycache__/
