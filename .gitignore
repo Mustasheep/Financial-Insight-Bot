@@ -6,6 +6,8 @@
 
 # Configurações locais
 .env
+
+# Vetorstore
 *.faiss
 *.pkl
 
