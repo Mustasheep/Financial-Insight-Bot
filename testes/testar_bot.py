@@ -104,7 +104,6 @@ logging.info("✅ Bot RAG pronto para responder!")
 # EXECUÇÃO DE TESTES
 # ------------------------------
 try:
-    # Primeira pergunta
     pergunta = "Quais são os principais riscos para a estabilidade financeira?"
     print(f"\n{'='*60}")
     print(f"--- Pergunta ---")
@@ -114,17 +113,6 @@ try:
     print("\n--- Resposta do Bot ---")
     print(resposta)
     print('='*60)
-    
-    # # Segunda pergunta
-    # pergunta = "Quais são os principais riscos para a estabilidade financeira?"
-    # print(f"\n{'='*60}")
-    # print(f"--- Pergunta ---")
-    # print(pergunta)
-    
-    # resposta = rag_chain.invoke(pergunta)
-    # print("\n--- Resposta do Bot ---")
-    # print(resposta)
-    # print('='*60)
 
 except Exception as e:
     logging.error(f"\n❌ Erro ao invocar a cadeia de RAG: {e}")
