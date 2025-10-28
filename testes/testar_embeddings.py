@@ -1,9 +1,8 @@
-import logging
 import os
 import sys
+import logging
 from dotenv import load_dotenv
 from langchain_openai import AzureOpenAIEmbeddings
-import logging
 
 load_dotenv()
 
