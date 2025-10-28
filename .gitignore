@@ -6,7 +6,8 @@
 
 # Configurações locais
 .env
-faiss_index/
+*.faiss
+*.pkl
 
 # Cache do Python
 __pycache__/
