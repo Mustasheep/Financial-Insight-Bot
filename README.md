@@ -14,7 +14,7 @@ Os relatórios do BACEN giram em torno da política monetária, que é o conjunt
 
 **2.** Indexação (O RAG): Quebrar os textos, transformá-los em vetores (embeddings) e armazená-los em um banco de dados vetorial (Vetorstore).
 
-**3.** Recuperação e Geração: O sistema primeiro buscará os trechos mais relevantes no Vetorstore (Recuperação) e, em seguida, usará um LLM para gerar uma resposta coesa usando apenas aqueles trechos (Geração).
+**3.** Recuperação e Geração: O sistema primeiro buscará os trechos mais relevantes no Vetorstore (Recuperação) e, em seguida, usará um SLM para gerar uma resposta coesa usando apenas aqueles trechos (Geração).
 
 ---
 
