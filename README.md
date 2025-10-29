@@ -1,59 +1,132 @@
 # Financial Insight Bot
 
-## Contexto 
+## Visão Geral
 
-Os relatórios do BACEN giram em torno da política monetária, que é o conjunto de ações que o Banco Central toma para controlar a quantidade de dinheiro na economia e, assim, manter a inflação sob controle.
-
-**Problema:** Relatórios financeiros, como o Relatório Trimestral de Inflação (RTI) ou o Relatório de Política Monetária (RPM) do Banco Central (BACEN), são documentos importantes. Eles ditam políticas, movem mercados e afetam a vida de todos. No entanto, eles são longos, densos e cheios de jargões técnicos. Encontrar uma informação específica exige leitura manual demorada.
-
-**Solução:** O Financial Insight Bot é um agente de IA especialista. O objetivo é transformar esses documentos estáticos (PDFs) em uma base de conhecimento dinâmica e conversacional.
-
-## Funcionamento
-
-**1.** Ingestão de Dados: Armazenar o sistema com os PDFs do BACEN.
-
-**2.** Indexação (O RAG): Quebrar os textos, transformá-los em vetores (embeddings) e armazená-los em um banco de dados vetorial (Vetorstore).
-
-**3.** Recuperação e Geração: O sistema primeiro buscará os trechos mais relevantes no Vetorstore (Recuperação) e, em seguida, usará um SLM para gerar uma resposta coesa usando apenas aqueles trechos (Geração).
+O **Financial Insight Bot** é uma aplicação de IA conversacional que utiliza técnicas avançadas de RAG (Retrieval-Augmented Generation) para transformar relatórios oficiais do Banco Central do Brasil (BACEN) em conhecimento dinâmico. Ele permite que os usuários façam perguntas e obtenham respostas baseadas diretamente nos conteúdos dos Relatórios de Política Monetária (RPM), usando técnicas de NLP (Processamento de Linguagem Natural) e machine learning em nuvem, tornando a análise econômica acessível, precisa e instantânea.
 
 ---
 
-## Jargões Essenciais de Inflação e Juros
+## Principais Ferramentas e Tecnologias
 
-- **Inflação:** É o aumento generalizado e contínuo dos preços de bens e serviços. Se a inflação está alta, o dinheiro compra menos coisas.
+- **Python 3.10+**
+- **Streamlit**: Interface web intuitiva e interativa para interação com o bot.
+- **LangChain + LangGraph**: Orquestração e criação da cadeia RAG (retrieval-augmented generation) e controladores conversacionais.
+- **FAISS**: Banco de dados vetorial eficiente para busca semântica.
+- **Azure OpenAI**: Embeddings e modelos SLM (Azure OpenAI Service) conectados via API.
+- **dotenv**: Gerenciamento seguro de variáveis de ambiente.
+- **PDF e processamento de dados**: Extração e vetorização de textos dos relatórios BACEN.
 
-- **IPCA** (Índice Nacional de Preços ao Consumidor Amplo): Este é o índice oficial de inflação do Brasil, medido pelo IBGE. Quando o BACEN fala em "meta de inflação", ele está se referindo à meta para o IPCA.
+---
 
-- **Taxa Selic** (Sistema Especial de Liquidação e de Custódia): Esta é a taxa básica de juros da economia brasileira. É a principal ferramenta do BACEN para controlar a inflação.
+## Estrutura do Projeto
 
-  - Se a inflação está alta, o BACEN aumenta a Selic. Isso torna o crédito mais caro, desestimulando o consumo e o investimento, o que (em tese) "esfria" a economia e ajuda a baixar os preços. Se a inflação está baixa ou controlada, o BACEN pode diminuir a Selic para estimular a atividade econômica.
+```
+FINANCIAL-INSIGHT-BOT/
+│
+├── .venv/                          # Ambiente virtual Python
+│
+├── app/                            # Aplicação Streamlit
+│   ├── __init__.py
+│   └── app.py                      # Interface web do chatbot
+│
+├── dados_rpm/                      # Dados de entrada (PDFs RPM)
+│   ├── RPM_Dez_2024.pdf ...        # Relatórios do BACEN
+│
+├── faiss_index/                    # Banco de dados vetorial
+│   ├── index.faiss
+│   └── index.pkl
+│
+├── src/                            # Código-fonte principal
+│   ├── agente/
+│   │   └── agente.py               # Cadeia RAG e lógica central
+│   ├── pipelines/
+│   │   ├── pipeline_ingestao.py    # Ingestão e vetorização dos PDFs
+│   │   └── processar_dados.py      # Pré-processamento de dados/texto
+│   ├── utils/
+│   │   ├── azure_client.py         # Conexão com Azure OpenAI
+│   │   └── nodes.py                # Nós computacionais do pipeline
+│   └── __init__.py
+│
+├── testes/                         # Testes automatizados/unidade
+│   ├── testar_bot.py
+│   ├── testar_embeddings.py ...
+│
+├── .env                            # Variáveis de ambiente (chaves API Azure, etc)
+├── .gitignore
+├── LICENSE
+├── README.md                       # Este arquivo
+└── requirements.txt                # Dependências Python
+```
 
-- **Copom** (Comitê de Política Monetária): É o órgão do BACEN que, a cada 45 dias, se reúne para decidir qual será a meta da Taxa Selic. Nossos relatórios (RPM) são publicados pelo Copom para justificar essas decisões.
+---
 
-## Jargões de Atividade Econômica
+## Funcionamento do Sistema
 
-- **PIB** (Produto Interno Bruto): É a soma de todos os bens e serviços finais produzidos em um país durante um período. É o principal indicador para medir o crescimento ou encolhimento da economia.
+### 1. Ingestão & Indexação
+- PDFs dos relatórios RPM são adicionados ao diretório `dados_rpm/`.
+- Rode `pipeline_ingestao.py` para processar, quebrar em textos menores, gerar embeddings com Azure OpenAI e indexar tudo no FAISS.
+- Resultado: um banco vetorial consultável e pronto para recuperação semântica.
 
-  - PIB em alta: Economia crescendo.
+### 2. Agente RAG
+- O código em `src/agente/agente.py` implementa a cadeia RAG, conectando o retriever (FAISS) ao modelo de linguagem Azure OpenAI para gerar respostas fundamentadas apenas nos trechos dos relatórios recuperados.
 
-  - PIB em baixa (especialmente 2 trimestres seguidos): Recessão técnica.
+### 3. Interface Usuário (Chatbot)
+- O usuário interage via interface Streamlit (`app/app.py`), podendo perguntar de forma natural sobre inflação, políticas monetárias, projeções do BACEN e muito mais.
+- O sistema responde com base nos relatórios, nunca inventando dados.
 
-- **Hiato do Produto:** É a diferença entre o PIB efetivo (o que a economia está produzindo de fato) e o PIB potencial (o que a economia poderia produzir se usasse todos os seus recursos de forma eficiente, sem gerar inflação).
+### 4. Testes Automatizados
+- Scripts no diretório `testes/` validam extração, embeddings, recuperação e respostas do bot.
 
-  - Hiato positivo: A economia está "superaquecida" (produzindo acima do potencial), o que gera pressão inflacionária.
+---
 
-  - Hiato negativo: A economia está "ociosa" (com desemprego, fábricas paradas), o que tende a reduzir a inflação.
- 
-## Jargões do Próprio Banco Central
+## Como Executar o Projeto
 
-- **Meta de Inflação:** O objetivo central do BACEN. O Conselho Monetário Nacional (CMN) define um valor e um intervalo de tolerância. O BACEN tem que usar a Selic para fazer o IPCA ficar dentro dessa faixa.
+### Pré-requisitos
+- Python 3.10+
+- Conta Azure/OpenAI (chaves nas variáveis de ambiente `.env`)
 
-- **Balanço de Riscos:** É a avaliação do Copom sobre o que pode fazer a inflação subir (riscos altistas) ou cair (riscos baixistas) no futuro.
+### Instalação
+1. Clone o repositório e entre na pasta raíz.
+2. Crie e ative um ambiente virtual:
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate  # ou .venv\Scripts\activate no Windows
+   ```
+3. Instale dependências:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Configure `.env` com suas chaves Azure/OpenAI.
+5. Adicione os PDFs dos relatórios ao diretório `dados_rpm/`.
 
-  - Exemplo Risco Altista: Uma seca que aumenta o preço dos alimentos ou uma alta do dólar.
+### Pipeline de Indexação
+Execute a ingestão e indexação dos documentos:
+```bash
+python src/pipelines/pipeline_ingestao.py
+```
 
-  - Exemplo Risco Baixista: Uma recessão global que diminui o preço das commodities.
+### Execução do Bot
+Inicie a interface:
+```bash
+streamlit run app/app.py
+```
 
-- **Projeções** (Cenário de Referência): O BACEN cria modelos para prever como a inflação e o PIB vão se comportar nos próximos trimestres e anos. Os relatórios são cheios dessas projeções, que são o que o nosso Bot vai adorar encontrar.
+### Testes
+```bash
+pytest testes/
+```
 
-- **Forward Guidance:** É a comunicação do BACEN sobre o que ele pretende fazer com os juros nas próximas reuniões. Isso serve para "guiar" as expectativas do mercado.
+---
+
+## Detalhes sobre Funcionamento
+
+- O bot **nunca responde usando conhecimento externo** – tudo é gerado a partir dos relatórios BACEN.
+- Guardrails embutidos impedem alucinações e respostas não fundamentadas.
+- Logs detalhados são emitidos para rastreabilidade (ajuda em depuração e operação em produção).
+
+---
+
+## Contato & Licença
+
+Distribuído sob a licença MIT.
+Dúvidas técnicas? Abra uma Issue ou Pull Request.
