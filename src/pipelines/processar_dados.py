@@ -1,4 +1,3 @@
-# src/processar_dados.py
 from langchain_community.document_loaders import PDFPlumberLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 import os
@@ -60,7 +59,7 @@ def processar_dados(
             loader = PDFPlumberLoader(file_path)
             docs = loader.load()
 
-            # Remove páginas muito curtas
+            # Remover páginas muito curtas
             docs_filtrados = [d for d in docs if len(d.page_content) > 100]
             total_paginas += len(docs_filtrados)
 
