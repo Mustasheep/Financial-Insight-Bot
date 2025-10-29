@@ -25,7 +25,8 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 st.set_page_config(
     page_title="Financial Insight Bot",
     page_icon="📊",
-    layout="wide")
+    layout="wide"
+)
 
 # ------------------------------
 # CABEÇALHO PRINCIPAL
@@ -54,26 +55,20 @@ st.divider()
 # SIDEBAR
 # ------------------------------
 with st.sidebar:
-    st.markdown(
-        """
-        <div style="text-align: center;">
-            <img src="https://images.icon-icons.com/3729/PNG/512/salary_marketing_income_financial_earn_money_is_work_icon_230565.png" width="120">
-        </div>
-        """,
-        unsafe_allow_html=True)
-    st.markdown("---")
-    st.header("Sobre o Projeto")
+    st.image("https://images.icon-icons.com/3729/PNG/512/salary_marketing_income_financial_earn_money_is_work_icon_230565.png", width=120)
+    st.header("📘 Sobre o Projeto")
     st.info("""
-    Este projeto foi desenvolvido por [**Thiago de Assis**](https://www.linkedin.com/in/thiago-mustasheep/)  
-    para demonstrar o uso de **RAG com SLMs** em análises financeiras.""")
+    Este projeto foi desenvolvido por **Thiago de Assis** para demonstrar o uso de **RAG com SLMs** em análises financeiras.
+    """)
     st.markdown("---")
     st.markdown("""
     **Como usar:**
-    1. Digite uma pergunta na caixa ao lado.  
+    1. Digite uma pergunta na caixa abaixo.  
     2. Aguarde enquanto o modelo busca respostas nos relatórios.  
-    3. Veja a resposta e as referências encontradas.""")
+    3. Veja a resposta e as referências encontradas.
+    """)
     add_vertical_space(3)
-    st.caption("Versão 1.2 • Powered by Streamlit & Azure OpenAI")
+    st.caption("Versão 1.0 • Powered by Streamlit & Azure OpenAI")
 
 # ------------------------------
 # CARREGAR RAG
@@ -99,7 +94,7 @@ rag_chain = load_rag_chain()
 # ÁREA PRINCIPAL
 # ------------------------------
 if rag_chain:
-    st.markdown("### Faça sua pergunta")
+    st.markdown("### 💬 Faça sua pergunta")
     user_question = st.text_input(
         "Digite aqui sua pergunta:",
         placeholder="Ex: Qual a projeção do IPCA para 2025?",
@@ -121,6 +116,7 @@ if rag_chain:
                 with st.spinner("Analisando os relatórios... ⏳"):
                     resposta = rag_chain.invoke(user_question)
 
+                # Ajuste conforme o retorno da nova cadeia RAG
                 st.markdown(resposta["result"])
 
             st.markdown("### 📚 Referências")
