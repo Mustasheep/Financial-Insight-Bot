@@ -12,7 +12,7 @@ O **Financial Insight Bot** é uma aplicação de IA conversacional que utiliza 
 - **Streamlit**: Interface web intuitiva e interativa para interação com o bot.
 - **LangChain + LangGraph**: Orquestração e criação da cadeia RAG (retrieval-augmented generation) e controladores conversacionais.
 - **FAISS**: Banco de dados vetorial eficiente para busca semântica.
-- **Azure OpenAI**: Embeddings e modelos SLM (`Phi-3.5-mini`) conectados via API.
+- **Azure OpenAI**: Embeddings e modelos SLM (`Phi-4-mini-instruct`, `gpt-4o-mini`) conectados via API.
 - **dotenv**: Gerenciamento seguro de variáveis de ambiente.
 - **PDF e processamento de dados**: Extração e vetorização de textos dos relatórios BACEN.
 
@@ -68,7 +68,7 @@ FINANCIAL-INSIGHT-BOT/
 - Resultado: um banco vetorial consultável e pronto para recuperação semântica.
 
 ### 2. Agente RAG
-- O código em `src/agente/agente.py` implementa a cadeia RAG, conectando o retriever (FAISS) ao modelo de linguagem `Phi-3.5-mini` para gerar respostas fundamentadas apenas nos trechos dos relatórios recuperados.
+- O código em `src/agente/agente.py` implementa a cadeia RAG, conectando o retriever (FAISS) ao modelo de linguagem `gpt-4o-mini` para gerar respostas fundamentadas apenas nos trechos dos relatórios recuperados.
 
 ### 3. Interface Usuário (Chatbot)
 - O usuário interage via interface Streamlit (`app/app.py`), podendo perguntar de forma natural sobre inflação, políticas monetárias, projeções do BACEN e muito mais.
@@ -102,7 +102,7 @@ FINANCIAL-INSIGHT-BOT/
 ### Pipeline de Indexação
 Execute a ingestão e indexação dos documentos:
 ```bash
-python src/pipelines/pipeline_ingestao.py
+python -m src.pipelines.pipeline_ingestao
 ```
 
 ### Execução do Bot
