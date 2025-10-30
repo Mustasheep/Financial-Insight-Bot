@@ -113,7 +113,7 @@ streamlit run app/app.py
 
 ### Testes
 ```bash
-pytest testes/
+pytest tests/
 ```
 
 ---
