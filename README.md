@@ -10,7 +10,7 @@ O **Financial Insight Bot** é uma aplicação de IA conversacional que utiliza 
 
 - **Python 3.10+**
 - **Streamlit**: Interface web intuitiva e interativa para interação com o bot.
-- **LangChain + LangGraph**: Orquestração e criação da cadeia RAG (retrieval-augmented generation) e controladores conversacionais.
+- **LangChain**: Orquestração e criação da cadeia RAG (retrieval-augmented generation).
 - **FAISS**: Banco de dados vetorial eficiente para busca semântica.
 - **Azure OpenAI**: Embeddings e modelos SLM (`Phi-4-mini-instruct`, `gpt-4o-mini`) conectados via API.
 - **dotenv**: Gerenciamento seguro de variáveis de ambiente.
@@ -43,8 +43,7 @@ FINANCIAL-INSIGHT-BOT/
 │   │   ├── pipeline_ingestao.py    # Ingestão e vetorização dos PDFs
 │   │   └── processar_dados.py      # Pré-processamento de dados/texto
 │   ├── utils/
-│   │   ├── azure_client.py         # Conexão com Azure OpenAI
-│   │   └── nodes.py                # Nós computacionais do pipeline
+│   │   └── azure_client.py         # Conexão com Azure OpenAI
 │   └── __init__.py
 │
 ├── testes/                         # Testes automatizados/unidade
