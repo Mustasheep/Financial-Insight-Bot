@@ -8,17 +8,12 @@ from langchain_core.runnables import RunnablePassthrough, RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
 
 from src.utils.azure_client import get_azure_embeddings, get_azure_slm
+from src.utils.setup_log import setup_logging
 
 load_dotenv()
+setup_logging()
+
 VECTORSTORE_PATH = "faiss_index"
-
-# Configuração de log
-logging.basicConfig(level=logging.INFO,
-                    format='(%(asctime)s) %(levelname)s ➧ %(message)s',
-                    datefmt='%d-%m-%Y %H:%M:%S')
-
-logging.getLogger("azure.core.pipeline.policies.http_logging_policy").setLevel(logging.WARNING)
-logging.getLogger("httpx").setLevel(logging.WARNING)
 
 # ------------------------------
 # FUNÇÕES DO AGENTE
