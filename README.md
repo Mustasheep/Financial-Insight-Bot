@@ -63,6 +63,7 @@ FINANCIAL-INSIGHT-BOT/
 
 ### 1. Ingestão & Indexação
 - PDFs dos relatórios RPM são adicionados ao diretório `dados_rpm/`.
+   - [Relatórios de Política Monetrária - BACEN](https://www.bcb.gov.br/publicacoes/rpm/cronologicos) 
 - Rode `pipeline_ingestao.py` para processar, quebrar em textos menores, gerar embeddings e indexar tudo no FAISS.
 - Resultado: um banco vetorial consultável e pronto para recuperação semântica.
 
