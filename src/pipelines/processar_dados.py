@@ -1,18 +1,15 @@
-# src/processar_dados.py
-from langchain_community.document_loaders import PDFPlumberLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 import os
 import glob
 import time
 import logging
 import sys
 
-# ------------------------------
-# CONFIGURAÇÃO DE LOG
-# ------------------------------
-logging.basicConfig(level=logging.INFO,
-                    format='(%(asctime)s) %(levelname)s ➧ %(message)s',
-                    datefmt='%d-%m-%Y %H:%M:%S')
+from langchain_community.document_loaders import PDFPlumberLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+from src.utils.setup_log import setup_logging
+
+setup_logging()
 
 # ------------------------------
 # FUNÇÃO PRINCIPAL
