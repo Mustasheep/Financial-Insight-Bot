@@ -9,15 +9,9 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 # Caminho do módulo
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.agente.agente import create_rag_chain
+from src.utils.setup_log import setup_logging
 
-# ------------------------------
-# LOGGING CONFIG
-# ------------------------------
-logging.basicConfig(level=logging.INFO,
-                    format='(%(asctime)s) %(levelname)s ➧ %(message)s',
-                    datefmt='%d-%m-%Y %H:%M:%S')
-logging.getLogger("azure.core.pipeline.policies.http_logging_policy").setLevel(logging.WARNING)
-logging.getLogger("httpx").setLevel(logging.WARNING)
+setup_logging()
 
 # ------------------------------
 # STREAMLIT CONFIG
@@ -84,6 +78,7 @@ def load_rag_chain():
     try:
         chain = create_rag_chain()
         logging.info("Pipeline RAG carregado com sucesso.")
+        logging.info("Bot RAG pronto para responder!")
         return chain
     except FileNotFoundError as e:
         st.error(f"Erro ao carregar o pipeline RAG: {e}")
