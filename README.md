@@ -8,7 +8,7 @@ O **Financial Insight Bot** é uma aplicação de IA conversacional que utiliza 
 
 ## Principais Ferramentas e Tecnologias
 
-- **Python 3.10+**
+- **Python 3.13+**
 - **Streamlit**: Interface web intuitiva e interativa para interação com o bot.
 - **LangChain**: Orquestração e criação da cadeia RAG (retrieval-augmented generation).
 - **FAISS**: Banco de dados vetorial eficiente para busca semântica.
@@ -50,7 +50,7 @@ FINANCIAL-INSIGHT-BOT/
 │   ├── testar_bot.py
 │   ├── testar_embeddings.py ...
 │
-├── .env                            # Variáveis de ambiente (chaves API Azure, etc)
+├── .env.example                    # Exemplo - Variáveis de ambiente (chaves API Azure, etc)
 ├── .gitignore
 ├── LICENSE
 ├── README.md                       # Este arquivo
@@ -82,7 +82,7 @@ FINANCIAL-INSIGHT-BOT/
 ## Como Executar o Projeto
 
 ### Pré-requisitos
-- Python 3.10+
+- Python 3.13+
 - Conta Azure/OpenAI (chaves nas variáveis de ambiente `.env`)
 
 ### Instalação
@@ -96,7 +96,7 @@ FINANCIAL-INSIGHT-BOT/
    ```bash
    pip install -r requirements.txt
    ```
-4. Configure `.env` com suas chaves Azure/OpenAI.
+4. Configure `.env` com suas chaves Azure/OpenAI conforme o exemplo em `.env.example`.
 5. Adicione os PDFs dos relatórios ao diretório `dados_rpm/`.
 
 ### Pipeline de Indexação
