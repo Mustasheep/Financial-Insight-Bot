@@ -109,5 +109,4 @@ def create_rag_chain():
         })
     )
 
-    logging.info("Bot RAG pronto para responder!")
     return rag_chain
