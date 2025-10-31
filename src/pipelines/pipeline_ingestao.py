@@ -7,13 +7,9 @@ from langchain_community.vectorstores import FAISS
 # Importando módulos
 from src.utils.azure_client import get_azure_embeddings
 from src.pipelines.processar_dados import processar_dados
+from src.utils.setup_log import setup_logging
 
-# ------------------------------
-# CONFIGURAÇÃO DE LOG
-# ------------------------------
-logging.basicConfig(level=logging.INFO,
-                    format="(%(asctime)s) %(levelname)s ➧ %(message)s",
-                    datefmt="%d-%m-%Y %H:%M:%S")
+setup_logging()
 
 # ------------------------------
 # FUNÇÃO PRINCIPAL
