@@ -12,7 +12,7 @@ O **Financial Insight Bot** é uma aplicação de IA conversacional que utiliza 
 - **Streamlit**: Interface web intuitiva e interativa para interação com o bot.
 - **LangChain**: Orquestração e criação da cadeia RAG (retrieval-augmented generation).
 - **FAISS**: Banco de dados vetorial eficiente para busca semântica.
-- **Azure OpenAI**: Embeddings e modelos SLM (`Phi-4-mini-instruct`, `gpt-4o-mini`) conectados via API.
+- **Azure OpenAI**: Embeddings e modelos SLM (`gpt-4o-mini`) conectados via API.
 - **dotenv**: Gerenciamento seguro de variáveis de ambiente.
 - **PDF e processamento de dados**: Extração e vetorização de textos dos relatórios BACEN.
 
