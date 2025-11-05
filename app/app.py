@@ -17,7 +17,7 @@ setup_logging()
 # STREAMLIT CONFIG
 # ------------------------------
 st.set_page_config(
-    page_title="Financial Insight Bot",
+    page_title="Monetary Insight Bot",
     page_icon="📊",
     layout="wide")
 
@@ -37,7 +37,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 colored_header(
-    label="🤖 Financial Insight Bot",
+    label="🤖 Monetary Insight Bot",
     description="Seu assistente de IA para analisar relatórios do Banco Central",
     color_name="blue-70",
 )
