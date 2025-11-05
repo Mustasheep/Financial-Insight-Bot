@@ -1,8 +1,8 @@
-# Financial Insight Bot
+# Monetary Insight Bot
 
 ## Visão Geral
 
-O **Financial Insight Bot** é uma aplicação de IA conversacional que utiliza técnicas avançadas de RAG (Retrieval-Augmented Generation) para transformar relatórios oficiais do Banco Central do Brasil (BACEN) em conhecimento dinâmico. Ele permite que os usuários façam perguntas e obtenham respostas baseadas diretamente nos conteúdos dos Relatórios de Política Monetária (RPM), usando técnicas de NLP (Processamento de Linguagem Natural) e machine learning em nuvem, tornando a análise econômica acessível, precisa e instantânea.
+O **Monetary Insight Bot** é uma aplicação de IA conversacional que utiliza técnicas avançadas de RAG (Retrieval-Augmented Generation) para transformar relatórios oficiais do Banco Central do Brasil (BACEN) em conhecimento dinâmico. Ele permite que os usuários façam perguntas e obtenham respostas baseadas diretamente nos conteúdos dos Relatórios de Política Monetária (RPM), usando técnicas de NLP (Processamento de Linguagem Natural) e machine learning em nuvem, tornando a análise econômica acessível, precisa e instantânea.
 
 ---
 
@@ -21,7 +21,7 @@ O **Financial Insight Bot** é uma aplicação de IA conversacional que utiliza 
 ## Estrutura do Projeto
 
 ```
-FINANCIAL-INSIGHT-BOT/
+MONETARY-INSIGHT-BOT/
 │
 ├── .venv/                          # Ambiente virtual Python
 │
