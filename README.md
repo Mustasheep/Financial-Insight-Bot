@@ -43,7 +43,8 @@ MONETARY-INSIGHT-BOT/
 │   │   ├── pipeline_ingestao.py    # Ingestão e vetorização dos PDFs
 │   │   └── processar_dados.py      # Pré-processamento de dados/texto
 │   ├── utils/
-│   │   └── azure_client.py         # Conexão com Azure OpenAI
+│   │   ├── azure_client.py         # Conexão com Azure OpenAI
+│   │   └── setup_log.py            # Configuração do logging
 │   └── __init__.py
 │
 ├── testes/                         # Testes automatizados/unidade
